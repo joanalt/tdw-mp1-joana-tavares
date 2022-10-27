@@ -32,4 +32,4 @@ test:
   dependencies:
     - install
   script:
-    - npm run test
+    - npm test
