@@ -5,6 +5,7 @@
     "build": "next build && next export",
     "start": "next start",
     "setup": "node ./contentful/setup.js",
+    "prettier": "prettier --write .",
     "lint": "next lint",
     "test": "jest"
   },
