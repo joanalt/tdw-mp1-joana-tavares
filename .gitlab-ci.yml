@@ -4,6 +4,8 @@ image: node:latest
 stages:
   - install
   - validation #prettier, lint e jest
+  - build
+  - deploy
 
 install:
   stage: install
@@ -33,3 +35,25 @@ test:
     - install
   script:
     - npm test
+
+build:
+  stage: build
+  script:
+    - npm run build
+  rules:
+    - if: $CI_COMMIT_REF_NAME == 'main' #corre apenas nesta branch (default)
+      when: on_success #apenas se for bem sucedido
+      allow_failure: true
+  artifacts:
+    paths:
+      - out/ #ainda não tenho a pasta, pq o build dá erro no comando
+
+deploy:
+  stage: deploy
+  script:
+    - npm run build
+    - npx netlify-cli deploy --site $NETLIFY_SITE_ID --auth $NETLIFY_AUTH_TOKEN --prod #faz o deploy para o netlify
+  rules:
+    - if: $CI_COMMIT_REF_NAME == 'main' #corre apenas nesta branch (default)
+      when: on_success #apenas se for bem sucedido
+      allow_failure: true
