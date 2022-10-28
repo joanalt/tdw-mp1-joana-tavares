@@ -20,7 +20,7 @@ prettier:
   dependencies:
     - install
   script:
-    - npm run prettier
+    - npm run prettier #ou npx prettier --write .
 
 lint:
   stage: validation
@@ -46,7 +46,7 @@ build:
       allow_failure: true
   artifacts:
     paths:
-      - out/ #ainda não tenho a pasta, pq o build dá erro no comando
+      - out/
 
 deploy:
   stage: deploy
