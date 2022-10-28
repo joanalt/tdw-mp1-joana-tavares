@@ -50,10 +50,9 @@ build:
 
 deploy:
   stage: deploy
-  dependencies:
-    - build
   script:
-    - npx netlify-cli deploy --site $NETLIFY_SITE_ID --auth $NETLIFY_AUTH_TOKEN --prod #faz o deploy para o netlify
+    - npm run build
+    - npx netlify-cli deploy --site $NETLIFY_SITE_ID --auth $NETLIFY_AUTH_TOKEN --prod
   rules:
     - if: $CI_COMMIT_REF_NAME == 'main'
       when: on_success
