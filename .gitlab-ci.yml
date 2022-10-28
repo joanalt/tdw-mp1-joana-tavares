@@ -41,7 +41,7 @@ build:
   script:
     - npm run build
   rules:
-    - if: $CI_COMMIT_REF_NAME == 'main' #corre apenas nesta branch (default)
+    - if: $CI_COMMIT_REF_NAME == 'main' #corre apenas nesta branch
       when: on_success #apenas se for bem sucedido
       allow_failure: true
   artifacts:
@@ -54,6 +54,6 @@ deploy:
     - npm run build
     - npx netlify-cli deploy --site $NETLIFY_SITE_ID --auth $NETLIFY_AUTH_TOKEN --prod #faz o deploy para o netlify
   rules:
-    - if: $CI_COMMIT_REF_NAME == 'main' #corre apenas nesta branch (default)
+    - if: $CI_COMMIT_REF_NAME == 'main' #corre apenas nesta branch
       when: on_success #apenas se for bem sucedido
       allow_failure: true
