@@ -20,7 +20,7 @@ prettier:
   dependencies:
     - install
   script:
-    - npx prettier --write .
+    - npm run prettier #ou npx prettier --write .
 
 lint:
   stage: validation
