@@ -46,7 +46,7 @@ build:
       allow_failure: true
   artifacts:
     paths:
-      - out/ #ainda não tenho a pasta, pq o build dá erro no comando
+      - out/
 
 deploy:
   stage: deploy
