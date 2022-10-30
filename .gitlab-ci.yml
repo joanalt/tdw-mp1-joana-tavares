@@ -1,6 +1,5 @@
 image: node:latest
 
-#stages: keywords em ordem de execução
 stages:
   - install
   - validation #prettier, lint e jest
@@ -29,7 +28,7 @@ lint:
   script:
     - npm run lint
 
-test:
+jest:
   stage: validation
   dependencies:
     - install
