@@ -6,6 +6,13 @@ stages:
   - build
   - deploy
 
+# Cache modules in between jobs
+cache:
+  key: $CI_COMMIT_REF_SLUG
+  paths:
+    - node_modules/
+  when: "always"
+
 install:
   stage: install
   script:
