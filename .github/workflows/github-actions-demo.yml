@@ -54,6 +54,10 @@ jobs:
             npm ci
             npm run build
 
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@v1.2
         with:
@@ -65,8 +69,8 @@ jobs:
           enable-commit-comment: true
           overwrites-pull-request-comment: true
         env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.br0A4RZgndzoUO4ov1SzkYcUXsy8yT4VfGifasfqmpM }}
-          NETLIFY_SITE_ID: ${{ secrets.35d6a78c-9601-4e30-ba06-2f766e0fc17c }}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
         timeout-minutes: 1
   
   
