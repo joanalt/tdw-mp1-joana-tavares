@@ -11,17 +11,13 @@ on:
   schedule:
   - cron: "0 0 * * *"
 
-jobs:
-  runs-on: -latest 
-    with:
-      cache: 'npm'
-      
-install:
+jobs: 
+  install:
     runs-on: -latest
     steps:
       - name: install
       - run: npm install
-    
+      
   prettier:
     runs-on: -latest
     needs: [install]
