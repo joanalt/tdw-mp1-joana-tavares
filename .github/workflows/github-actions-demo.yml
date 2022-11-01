@@ -54,23 +54,23 @@ jobs:
             npm ci
             npm run build
             
-    deploy:
-      runs-on: ubuntu-latest
-      steps:
-        - name: Deploy to Netlify
-          uses: nwtgck/actions-netlify@v1.2
-          with:
-            publish-dir: './out'
-            production-branch: main
-            github-token: ${{ secrets.GITHUB_TOKEN }}
-            deploy-message: "Deploy from GitHub Actions"
-            enable-pull-request-comment: false
-            enable-commit-comment: true
-            overwrites-pull-request-comment: true
-          env:
-            NETLIFY_AUTH_TOKEN: ${{ secrets.br0A4RZgndzoUO4ov1SzkYcUXsy8yT4VfGifasfqmpM }}
-            NETLIFY_SITE_ID: ${{ secrets.35d6a78c-9601-4e30-ba06-2f766e0fc17c }}
-          timeout-minutes: 1
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to Netlify
+        uses: nwtgck/actions-netlify@v1.2
+        with:
+          publish-dir: './out'
+          production-branch: main
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          deploy-message: "Deploy from GitHub Actions"
+          enable-pull-request-comment: false
+          enable-commit-comment: true
+          overwrites-pull-request-comment: true
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.br0A4RZgndzoUO4ov1SzkYcUXsy8yT4VfGifasfqmpM }}
+          NETLIFY_SITE_ID: ${{ secrets.35d6a78c-9601-4e30-ba06-2f766e0fc17c }}
+        timeout-minutes: 1
   
   
   
