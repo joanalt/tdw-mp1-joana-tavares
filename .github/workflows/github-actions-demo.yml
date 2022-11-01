@@ -12,20 +12,33 @@ on:
   - cron: "0 0 * * *"
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [14.x, 16.x, 18.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
+  runs-on: -latest 
+    with:
+      cache: 'npm'
+      
+install:
+    runs-on: -latest
     steps:
-    - uses: actions/checkout@v3
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - run: npm ci
-    - run: npm run build --if-present
-    - run: npm test
+      - name: install
+      - run: npm install
+    
+  prettier:
+    runs-on: -latest
+    needs: [install]
+    steps:
+      - name: prettier
+      - run: npm run prettier
+    
+  lint:
+    runs-on: -latest
+    needs: [install]
+    steps:
+      - name: lint
+      - run: npm run lint
+    
+  jest:
+    runs-on: -latest
+    needs: [install]
+    steps:
+      - name: test
+      - run: npm test
