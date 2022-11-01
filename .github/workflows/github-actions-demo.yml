@@ -53,10 +53,7 @@ jobs:
       - run: |
             npm ci
             npm run build
-            
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
+
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@v1.2
         with:
