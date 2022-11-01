@@ -27,18 +27,24 @@ install:
     needs: [install]
     steps:
       - name: prettier
-      - run: npm run prettier
+      - run: |
+           npm install
+           npm run prettier
     
   lint:
     runs-on: -latest
     needs: [install]
     steps:
       - name: lint
-      - run: npm run lint
+      - run: |
+           npm install
+           npm run lint
     
   jest:
     runs-on: -latest
     needs: [install]
     steps:
       - name: test
-      - run: npm test
+      - run: |
+           npm install
+           npm test
