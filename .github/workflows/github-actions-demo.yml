@@ -23,18 +23,24 @@ jobs:
     needs: [install]
     steps:
       - uses: actions/checkout@v3
-      - run: npm run prettier
+      - run: 
+            npm install
+            npm run prettier
       
   lint:
     runs-on: ubuntu-latest
     needs: [install]
     steps:
       - uses: actions/checkout@v3
-      - run: npm run lint
+      - run:
+            npm install
+            npm run lint
       
   jest:
     runs-on: ubuntu-latest
     needs: [install]
     steps:
       - uses: actions/checkout@v3
-      - run: npm test
+      - run: 
+          npm install
+          npm test
