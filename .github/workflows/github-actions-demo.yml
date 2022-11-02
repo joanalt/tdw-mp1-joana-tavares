@@ -58,6 +58,7 @@ jobs:
       - run: npm run build
       - uses: actions/upload-artifact@v3
         with:
+          name: build-files
           path: out
           retention-days: 1
       
@@ -71,6 +72,7 @@ jobs:
           node-version: "16"
       - uses: actions/download-artifact@v3
         with:
+          name: build-files
           path: out
           retention-days: 1
       - run: npx netlify-cli deploy --site "$NETLIFY_SITE_ID" --auth "$NETLIFY_AUTH_TOKEN" --prod
