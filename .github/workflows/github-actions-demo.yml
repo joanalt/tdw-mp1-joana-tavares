@@ -9,7 +9,9 @@ on:
   pull_request:
     branches: [ "main" ]
   schedule:
-  - cron: "0 0 * * *"
+    - cron: "0 0 * * *"
+  repository_dispatch:
+    types: [contentful.deploy]
   
 env:
   NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
