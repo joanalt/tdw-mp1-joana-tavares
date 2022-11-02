@@ -58,7 +58,7 @@ jobs:
           retention-days: 1
       
   deploy:
-    needs: [install, jest, build]
+    needs: [install, prettier, lint, jest, build]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
